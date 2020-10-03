@@ -11,6 +11,7 @@ public class Skeleton : MonoBehaviour
 
     public Transform player;
     public Animator anim;
+    public GameObject sword;
    
 
     void Update()
@@ -34,6 +35,7 @@ public class Skeleton : MonoBehaviour
         {
             anim.SetBool("isAttacking", true);
             anim.SetBool("isWalking", false);
+            sword.SetActive(true);
         }
     }
 
@@ -54,6 +56,7 @@ public class Skeleton : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, player.position, Time.deltaTime * speed);
                 anim.SetBool("isWalking", true);
                 anim.SetBool("isAttacking", false);
+                sword.SetActive(false);
             }
             else if (Vector3.Distance(transform.position, player.position) < 3.5f)
             {
