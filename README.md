@@ -1,2 +1,0 @@
-# Ludum
-Ludum dare game
