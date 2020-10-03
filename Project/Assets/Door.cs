@@ -6,12 +6,12 @@ public class Door : MonoBehaviour
 {
     public string doorType;
     public GameLoop gameLoop;
-
+    public Transform oppositePos;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && gameLoop.doorType == doorType)
         {
-            gameLoop.Entered();
+            gameLoop.Enter(oppositePos);
 
         }
         else
