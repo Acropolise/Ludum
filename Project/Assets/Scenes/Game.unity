@@ -935,9 +935,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f21078dc7d8dd4ea330a789dfb490e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 15
+  maxTime: 20
   currentTime: 0
   text: {fileID: 390218518}
+  gameLoop: {fileID: 1257587396}
 --- !u!1 &361732996
 GameObject:
   m_ObjectHideFlags: 0
@@ -2394,8 +2395,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zOffset: 35
   speed: 15
-  moved: 0
-  loop: {fileID: 1257587396}
 --- !u!1 &982780853
 GameObject:
   m_ObjectHideFlags: 0
@@ -3381,6 +3380,7 @@ MonoBehaviour:
   currentLevel: 0
   timerObj: {fileID: 390218516}
   timer: {fileID: 331828358}
+  timeToEachDoor: 8
 --- !u!4 &1257587397
 Transform:
   m_ObjectHideFlags: 0

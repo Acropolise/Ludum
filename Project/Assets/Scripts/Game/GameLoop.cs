@@ -24,6 +24,8 @@ public class GameLoop : MonoBehaviour
     public Timer timer;
     bool canLose = true;
     bool resetedLevel = false;
+
+    public float timeToEachDoor = 8;
    
     void Start()
     {
@@ -53,11 +55,12 @@ public class GameLoop : MonoBehaviour
         timerObj.SetActive(false);
         canLose = false;
         setupNewLevel = false;
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.32f);
          
             if(!setupNewLevel)
             {
-                timer.maxTime = 7.5f * requiredEnters;
+            timeToEachDoor -= 0.75f;
+             //   timer.maxTime = timeToEachDoor * requiredEnters;
                 timer.ResetTimer();
                 currentLevel++;
                 Spawn();
@@ -94,7 +97,7 @@ public class GameLoop : MonoBehaviour
     public void Reset()
     {
         Spawn();
-        timer.maxTime = 8 * requiredEnters;
+    //    timer.maxTime = timeToEachDoor * requiredEnters;
         timer.ResetTimer();
         currentEnters = 0;
         GenerateDoor();
@@ -112,7 +115,7 @@ public class GameLoop : MonoBehaviour
     IEnumerator TextRoutine()
     {
         text.gameObject.SetActive(true);
-        text.text = "Enter " + doorType + " Door " + requiredEnters + " Times";
+        text.text = "Enter the " + doorType + " door " + requiredEnters + " times";
         yield return new WaitForSeconds(3.5f);
         text.gameObject.SetActive(false);
     }

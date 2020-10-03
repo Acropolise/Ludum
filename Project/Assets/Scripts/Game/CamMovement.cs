@@ -7,8 +7,6 @@ public class CamMovement : MonoBehaviour
 
     public float zOffset;
     public float speed = 5f;
-    public bool moved;
-    public GameLoop loop;
   
 
     public void Move()

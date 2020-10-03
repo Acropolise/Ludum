@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    public float maxTime;
+    public float maxTime = 20;
     public float currentTime;
     public TextMeshProUGUI text;
+    public GameLoop gameLoop;
 
 
     void Start()
@@ -25,4 +26,6 @@ public class Timer : MonoBehaviour
     {
         currentTime = maxTime;
     }
+
+
 }
