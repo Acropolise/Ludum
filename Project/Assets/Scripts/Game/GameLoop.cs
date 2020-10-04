@@ -26,9 +26,15 @@ public class GameLoop : MonoBehaviour
     bool resetedLevel = false;
 
     public float timeToEachDoor = 8;
+
+    public GameObject[] lights;
+    int doorNum;
    
     void Start()
     {
+        requiredEnters = Random.Range(1, 4);
+        StartCoroutine(TextRoutine());
+
         GenerateDoor();
     }
 
@@ -50,19 +56,22 @@ public class GameLoop : MonoBehaviour
 
     IEnumerator CompleteLevel()
     {
-        cam.zOffset += 35;
+
         cam.Move();
         timerObj.SetActive(false);
         canLose = false;
         setupNewLevel = false;
-        yield return new WaitForSeconds(2.32f);
+        yield return new WaitForSeconds(3);
          
             if(!setupNewLevel)
             {
+            requiredEnters = Random.Range(1, 5);
+            cam.zOffset *= 2;
             timeToEachDoor -= 0.75f;
              //   timer.maxTime = timeToEachDoor * requiredEnters;
                 timer.ResetTimer();
-                currentLevel++;
+            StartCoroutine(TextRoutine());
+            currentLevel++;
                 Spawn();
                 currentEnters = 0;
                 timerObj.SetActive(true);
@@ -105,18 +114,25 @@ public class GameLoop : MonoBehaviour
 
     public void GenerateDoor()
     {
-        
-        requiredEnters = Random.Range(1, 5);
-        doorType = doors[Random.Range(0, doors.Length)];
-        StartCoroutine(TextRoutine());
+         doorNum = Random.Range(0, doors.Length);
+        doorType = doors[doorNum];
+        StartCoroutine(Lights());
+     
 
+    }
+    IEnumerator Lights()
+    {
+        lights[doorNum].SetActive(true);
+        yield return new WaitForSeconds(3);
+        lights[doorNum].SetActive(false);
+        GenerateDoor();
     }
 
     IEnumerator TextRoutine()
     {
         text.gameObject.SetActive(true);
-        text.text = "Enter the " + doorType + " door " + requiredEnters + " times";
-        yield return new WaitForSeconds(3.5f);
+        text.text = "You need to enter " + requiredEnters + " doors";
+        yield return new WaitForSeconds(3);
         text.gameObject.SetActive(false);
     }
 

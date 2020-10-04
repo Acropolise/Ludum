@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Movement : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Movement : MonoBehaviour
     public float gravity = 18f;
      Vector3 velocity;
 
+
     public Animator anim;
     void Start()
     {
@@ -27,6 +29,8 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        if (!ctrl.enabled)
+            return;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
@@ -49,6 +53,8 @@ public class Movement : MonoBehaviour
 
     void Jump()
     {
+        if (!ctrl.enabled)
+            return;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
         {
@@ -61,7 +67,6 @@ public class Movement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
 
- 
         ctrl.Move(velocity * Time.deltaTime);
     }
 }
