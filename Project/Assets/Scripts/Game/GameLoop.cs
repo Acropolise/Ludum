@@ -29,6 +29,7 @@ public class GameLoop : MonoBehaviour
     int doorNum;
 
     public AudioSource src;
+    public AudioClip woosh;
     public AudioClip error;
 
     public int minEnters = 1;
@@ -113,6 +114,7 @@ public class GameLoop : MonoBehaviour
     }
     public void Enter(Transform spawn)
     {
+        src.PlayOneShot(woosh, 1);
         StartCoroutine(PanelRoutine());
         ctrl.enabled = false;
         player.position = spawn.position;
