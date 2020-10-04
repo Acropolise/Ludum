@@ -33,8 +33,9 @@ public class GameLoop : MonoBehaviour
 
     public int minEnters = 1;
     public int maxEnters = 3;
-
     public float newDoorTime = 4;
+
+    public GameObject panel;
    
     void Start()
     {
@@ -112,11 +113,19 @@ public class GameLoop : MonoBehaviour
     }
     public void Enter(Transform spawn)
     {
+        StartCoroutine(PanelRoutine());
         ctrl.enabled = false;
         player.position = spawn.position;
         ctrl.enabled = true;
 
         currentEnters++;
+    }
+    IEnumerator PanelRoutine()
+    {
+        panel.SetActive(true);
+        yield return new WaitForSeconds(1.2f);
+        panel.SetActive(false);
+
     }
 
 
@@ -158,7 +167,7 @@ public class GameLoop : MonoBehaviour
     IEnumerator TextRoutine()
     {
         text.gameObject.SetActive(true);
-        text.text = "ENTER " + requiredEnters + " DOORS";
+        text.text = "Enter " + requiredEnters + " Doors";
         yield return new WaitForSeconds(3);
         text.gameObject.SetActive(false);
     }
