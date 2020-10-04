@@ -19,13 +19,23 @@ public class Movement : MonoBehaviour
     public float gravity = 18f;
      Vector3 velocity;
 
+    Rigidbody rb;
+
 
     public Animator anim;
     void Start()
     {
         ctrl = GetComponent<CharacterController>();
-
+        rb = GetComponent<Rigidbody>();
     }
+
+    public IEnumerator ReturnToNormal()
+    {
+        yield return new WaitForSeconds(0.4f);
+        ctrl.enabled = true;
+        rb.isKinematic = true;
+    }
+
 
     void Update()
     {

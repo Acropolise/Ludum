@@ -16,6 +16,7 @@ public class GameLoop : MonoBehaviour
     public CharacterController ctrl;
 
     public TextMeshProUGUI text;
+    public TextMeshProUGUI timerText;
     public CamMovement cam;
     public bool setupNewLevel;
 
@@ -23,16 +24,21 @@ public class GameLoop : MonoBehaviour
     public GameObject timerObj;
     public Timer timer;
     bool canLose = true;
-    bool resetedLevel = false;
-
-    public float timeToEachDoor = 8;
 
     public GameObject[] lights;
     int doorNum;
+
+    public AudioSource src;
+    public AudioClip error;
+
+    public int minEnters = 1;
+    public int maxEnters = 3;
+
+    public float newDoorTime = 4;
    
     void Start()
     {
-        requiredEnters = Random.Range(1, 4);
+        requiredEnters = Random.Range(minEnters, maxEnters);
         StartCoroutine(TextRoutine());
 
         GenerateDoor();
@@ -46,11 +52,26 @@ public class GameLoop : MonoBehaviour
 
         }
 
-        if(timer.currentTime <= 0 && !resetedLevel && canLose)
+        if(timer.currentTime <= 0 && canLose)
         {
-            resetedLevel = true;
-            Reset();
-            resetedLevel = false;
+            cam.zOffset = 0;
+            cam.speed = 21;
+            cam.Move();
+            timerText.gameObject.SetActive(false);
+            if(Vector3.Distance(cam.transform.position, new Vector3(0, 30, 0)) < 2)
+            {
+                minEnters = 1;
+                maxEnters = 3;
+                StartCoroutine(TextRoutine());
+                cam.speed = 17;
+                timer.ResetTimer();
+                currentEnters = 0;
+                currentLevel = 0;
+                newDoorTime = 5;
+                timerText.gameObject.SetActive(true);
+                cam.zOffset = 45;
+                Spawn();
+            }
         }
     }
 
@@ -61,21 +82,25 @@ public class GameLoop : MonoBehaviour
         timerObj.SetActive(false);
         canLose = false;
         setupNewLevel = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2.8f);
          
             if(!setupNewLevel)
             {
-            requiredEnters = Random.Range(1, 5);
-            cam.zOffset *= 2;
-            timeToEachDoor -= 0.75f;
-             //   timer.maxTime = timeToEachDoor * requiredEnters;
+            cam.zOffset += 45;
+            if(newDoorTime > 1.5f)
+            {
+                newDoorTime -= 0.3f;
+            }
+            timer.maxTime += 3.5f;
                 timer.ResetTimer();
+            minEnters++;
+            maxEnters++;
+            requiredEnters = Random.Range(minEnters, maxEnters);
             StartCoroutine(TextRoutine());
             currentLevel++;
                 Spawn();
                 currentEnters = 0;
                 timerObj.SetActive(true);
-                GenerateDoor();
                 setupNewLevel = true;
                 canLose = true;
             }
@@ -106,10 +131,13 @@ public class GameLoop : MonoBehaviour
     public void Reset()
     {
         Spawn();
-    //    timer.maxTime = timeToEachDoor * requiredEnters;
-        timer.ResetTimer();
+        StartCoroutine(TextRoutine());
+        if(!src.isPlaying)
+        {
+            src.PlayOneShot(error, 1);
+        }    
+
         currentEnters = 0;
-        GenerateDoor();
     }
 
     public void GenerateDoor()
@@ -123,7 +151,7 @@ public class GameLoop : MonoBehaviour
     IEnumerator Lights()
     {
         lights[doorNum].SetActive(true);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(newDoorTime);
         lights[doorNum].SetActive(false);
         GenerateDoor();
     }
@@ -131,7 +159,7 @@ public class GameLoop : MonoBehaviour
     IEnumerator TextRoutine()
     {
         text.gameObject.SetActive(true);
-        text.text = "You need to enter " + requiredEnters + " doors";
+        text.text = "ENTER " + requiredEnters + " DOORS";
         yield return new WaitForSeconds(3);
         text.gameObject.SetActive(false);
     }
