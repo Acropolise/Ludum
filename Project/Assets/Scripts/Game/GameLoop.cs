@@ -131,13 +131,12 @@ public class GameLoop : MonoBehaviour
     public void Reset()
     {
         Spawn();
-        StartCoroutine(TextRoutine());
-        if(!src.isPlaying)
+            src.PlayOneShot(error, 1);  
+        if(currentEnters > 0)
         {
-            src.PlayOneShot(error, 1);
-        }    
+            currentEnters--;
+        }
 
-        currentEnters = 0;
     }
 
     public void GenerateDoor()

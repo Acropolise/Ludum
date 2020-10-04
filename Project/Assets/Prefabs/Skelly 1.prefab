@@ -67,6 +67,8 @@ MonoBehaviour:
   player: {fileID: 0}
   anim: {fileID: 4861857220207431108}
   agent: {fileID: 4861857218761279499}
+  canWalk: 1
+  range: 7
 --- !u!195 &4861857218761279499
 NavMeshAgent:
   m_ObjectHideFlags: 0

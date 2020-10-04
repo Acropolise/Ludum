@@ -14,7 +14,7 @@ public class SkellyAttack : MonoBehaviour
         if (other.CompareTag("Player"))
         {
     
-            print("Hit");
+
             var angle = other.transform.position - transform.position;
             var dist = angle.magnitude;
             var direction = angle / dist;

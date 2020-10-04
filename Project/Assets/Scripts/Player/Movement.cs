@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
      Vector3 velocity;
 
     Rigidbody rb;
+    public AudioSource footSrc;
 
 
     public Animator anim;
@@ -46,6 +47,13 @@ public class Movement : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
         if (direction.magnitude >= 0.1f)
         {
+            if (!footSrc.isPlaying && isGrounded)
+            {
+                footSrc.volume = Random.Range(0.05f, 0.1f);
+                footSrc.pitch = Random.Range(0.87f, 0.91f);
+                footSrc.Play();
+            }
+             
             anim.SetBool("isWalking", true);
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);

@@ -9,31 +9,50 @@ public class Skeleton : MonoBehaviour
     public Transform player;
     public Animator anim;
     public NavMeshAgent agent;
+
+    public bool canWalk;
+
+    public float range = 10;
    
 
     void Update()
     {
-        if(Vector3.Distance(transform.position, player.position) < 10)
+        if (canWalk)
         {
-            if((Vector3.Distance(transform.position, player.position) < 4.25f))
+            if (Vector3.Distance(transform.position, player.position) <= range)
             {
-                agent.isStopped = true;
-                anim.SetBool("isAttacking", true);
-                anim.SetBool("isWalking", false);
+                if ((Vector3.Distance(transform.position, player.position) < 4.25f))
+                {
+                    agent.isStopped = true;
+                    anim.SetBool("isAttacking", true);
+                    anim.SetBool("isWalking", false);
+                }
+                else
+                {
+                    agent.isStopped = false;
+                    agent.SetDestination(player.position);
+                    anim.SetBool("isWalking", true);
+                    anim.SetBool("isAttacking", false);
+                }
+
             }
             else
             {
-                agent.isStopped = false;
-                agent.SetDestination(player.position);
-                anim.SetBool("isWalking", true);
-                anim.SetBool("isAttacking", false);
+                agent.isStopped = true;
+                anim.SetBool("isWalking", false);
             }
-
         }
         else
         {
-            agent.isStopped = true;
-            anim.SetBool("isWalking", false);
+            if ((Vector3.Distance(transform.position, player.position) < 4.25f))
+            {
+                anim.SetBool("isAttacking", true);
+            }
+            else
+            {
+                anim.SetBool("isAttacking", false);
+            }
+
         }
         
    
