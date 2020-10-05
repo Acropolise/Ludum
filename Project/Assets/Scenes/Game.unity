@@ -5711,7 +5711,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.06
-  paragraph: '"To escape the loop, you must enter only the glowing doors""'
+  paragraph: '"The dimension you find yourself in doesn''t follow the rules of your
+    world.""'
   text: {fileID: 32663434}
 --- !u!1 &686333250
 GameObject:
@@ -5997,7 +5998,7 @@ PrefabInstance:
     - target: {fileID: 7608830888440075543, guid: 6547a8ab3154f594385ac1c844c2ccbd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7608830888440075543, guid: 6547a8ab3154f594385ac1c844c2ccbd,
         type: 3}
@@ -7258,8 +7259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.06
-  paragraph: '"Fulfil my commands, because otherwise, you might be stuck in here
-    for the rest of your life""'
+  paragraph: '"There are creatures luriking in the darkness. To escape you must follow
+    the light.""'
   text: {fileID: 32663434}
 --- !u!1001 &853729943
 PrefabInstance:
@@ -13153,7 +13154,7 @@ PrefabInstance:
     - target: {fileID: 7608830888440075543, guid: 6547a8ab3154f594385ac1c844c2ccbd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7608830888440075543, guid: 6547a8ab3154f594385ac1c844c2ccbd,
         type: 3}
@@ -13481,6 +13482,8 @@ MonoBehaviour:
   - {fileID: 1813837085}
   - {fileID: 669732407}
   - {fileID: 841749278}
+  - {fileID: 0}
+  - {fileID: 0}
   index: 0
   text: {fileID: 32663434}
   loop: {fileID: 1257587396}
@@ -18575,7 +18578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.06
-  paragraph: '"I''ve locked you in an infinite door maze...""'
+  paragraph: '"I imagine you''re scared and confused...""'
   text: {fileID: 32663434}
 --- !u!4 &1813837087
 Transform:
@@ -18641,7 +18644,7 @@ PrefabInstance:
     - target: {fileID: 7608830888440075543, guid: 6547a8ab3154f594385ac1c844c2ccbd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7608830888440075543, guid: 6547a8ab3154f594385ac1c844c2ccbd,
         type: 3}
@@ -23359,7 +23362,7 @@ PrefabInstance:
     - target: {fileID: 6748229906378036475, guid: 27efb69e3b4575f46b29cd6163c475ab,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6748229906378036475, guid: 27efb69e3b4575f46b29cd6163c475ab,
         type: 3}
