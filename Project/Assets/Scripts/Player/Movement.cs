@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
     public LayerMask groundMask;
     public float jumpHeight = 5f;
     public float gravity = 18f;
+   public bool canJump;
      Vector3 velocity;
 
     Rigidbody rb;
@@ -71,8 +72,7 @@ public class Movement : MonoBehaviour
 
     void Jump()
     {
-        if (!ctrl.enabled)
-            return;
+        if (!canJump) return;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
         {

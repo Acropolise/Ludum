@@ -35,11 +35,14 @@ public class GameLoop : MonoBehaviour
     public int minEnters = 1;
     public int maxEnters = 3;
     public float newDoorTime = 4;
+    public bool startedGame;
 
     public GameObject panel;
     int i;
    
-    void Start()
+
+
+    public void StartGame()
     {
         requiredEnters = Random.Range(minEnters, maxEnters);
         StartCoroutine(TextRoutine());
@@ -49,7 +52,7 @@ public class GameLoop : MonoBehaviour
 
     void Update()
     {
-        if(currentEnters >= requiredEnters)
+        if(currentEnters >= requiredEnters && startedGame)
         {
           StartCoroutine(CompleteLevel());
 
@@ -177,11 +180,11 @@ public class GameLoop : MonoBehaviour
         text.gameObject.SetActive(true);
         if(requiredEnters == 1)
         {
-            text.text = "Enter " + requiredEnters + " Door";
+            text.text =  "\"Enter " + requiredEnters + " Door...\"";
         }
         else
         {
-            text.text = "Enter " + requiredEnters + " Doors";
+            text.text = "\"Enter " + requiredEnters + " Doors...\"";
         }
 
         yield return new WaitForSeconds(3);
