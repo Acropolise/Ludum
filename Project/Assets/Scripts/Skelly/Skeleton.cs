@@ -13,9 +13,26 @@ public class Skeleton : MonoBehaviour
     public bool canWalk;
 
     public float range = 10;
-   
+
+    AudioSource src;
+    public AudioClip clip;
+
+    private void Start()
+    {
+        src = GetComponent<AudioSource>();
+    }
+
 
     void Update()
+    {
+        StartCoroutine(SkeletonRoutine());
+     
+        
+   
+
+    }
+
+    IEnumerator SkeletonRoutine()
     {
         if (canWalk)
         {
@@ -26,6 +43,15 @@ public class Skeleton : MonoBehaviour
                     agent.isStopped = true;
                     anim.SetBool("isAttacking", true);
                     anim.SetBool("isWalking", false);
+
+                    if (src != null)
+                    {
+                        yield return new WaitForSeconds(0.1f);
+                        if (!src.isPlaying)
+                        {
+                            src.PlayOneShot(clip, 0.13f);
+                        }
+                    }
                 }
                 else
                 {
@@ -47,6 +73,15 @@ public class Skeleton : MonoBehaviour
             if ((Vector3.Distance(transform.position, player.position) < 4.25f))
             {
                 anim.SetBool("isAttacking", true);
+                if (src != null)
+                {
+
+                    yield return new WaitForSeconds(0.1f);
+                    if (!src.isPlaying)
+                    {
+                        src.PlayOneShot(clip, 0.13f);
+                    }
+                }
             }
             else
             {
@@ -54,9 +89,6 @@ public class Skeleton : MonoBehaviour
             }
 
         }
-        
-   
-
     }
 
 

@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour
     void Update()
     {
         currentTime -= Time.deltaTime;
-        text.text = "Time: " + currentTime.ToString("f2");
+        text.text = currentTime.ToString("f2");
     }
 
     public void ResetTimer()

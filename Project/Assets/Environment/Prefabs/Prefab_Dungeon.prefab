@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340003541}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.94, y: 8.67, z: -13.52}
+  m_LocalPosition: {x: 0.142, y: 8.67, z: -13.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 658457396393221007}
@@ -42,7 +42,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.30196083, g: 0.4591424, b: 0.90588236, a: 1}
+  m_Color: {r: 0, g: 0.26114655, b: 1, a: 1}
   m_Intensity: 1.99
   m_Range: 27.14
   m_SpotAngle: 30
@@ -117,7 +117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555500005}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.94, y: 8.67, z: 11.6}
+  m_LocalPosition: {x: -0.022, y: 8.67, z: 11.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 658457396393221007}
@@ -134,7 +134,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.30196083, g: 0.4591424, b: 0.90588236, a: 1}
+  m_Color: {r: 0, g: 0.26114655, b: 1, a: 1}
   m_Intensity: 1.99
   m_Range: 27.14
   m_SpotAngle: 30
@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645768974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.47, y: 8.67, z: -0.26}
+  m_LocalPosition: {x: -13.47, y: 8.67, z: -0.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 658457396393221007}
@@ -226,7 +226,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.30196083, g: 0.4591424, b: 0.90588236, a: 1}
+  m_Color: {r: 0, g: 0.26114655, b: 1, a: 1}
   m_Intensity: 1.99
   m_Range: 27.14
   m_SpotAngle: 30
@@ -301,7 +301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686020439}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.37, y: 8.67, z: -0.26}
+  m_LocalPosition: {x: 12.37, y: 8.67, z: 0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 658457396393221007}
@@ -318,7 +318,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.30196083, g: 0.4591424, b: 0.90588236, a: 1}
+  m_Color: {r: 0, g: 0.26114655, b: 1, a: 1}
   m_Intensity: 1.99
   m_Range: 27.14
   m_SpotAngle: 30

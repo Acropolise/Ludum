@@ -2833,9 +2833,11 @@ MonoBehaviour:
   - {fileID: 1159685008741386, guid: 499ae38ba7b9449458cf7a142c7f4526, type: 3}
   - {fileID: 1001857722554996, guid: 7bf50bb5b89ffd14d80624bf7bdf1c05, type: 3}
   - {fileID: 1298029560938040, guid: d74e73c0044f5cd43a6f1f506f0df790, type: 3}
-  maxTimeBtwAttacks: 7
+  maxTimeBtwAttacks: 6
   i: 0
   hitPoint: {fileID: 898076486}
+  player: {fileID: 0}
+  range: 11
 --- !u!1 &8539679293407501808
 GameObject:
   m_ObjectHideFlags: 0

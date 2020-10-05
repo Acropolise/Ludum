@@ -37,6 +37,7 @@ public class GameLoop : MonoBehaviour
     public float newDoorTime = 4;
 
     public GameObject panel;
+    int i;
    
     void Start()
     {
@@ -60,7 +61,7 @@ public class GameLoop : MonoBehaviour
             cam.speed = 21;
             cam.Move();
             timerText.gameObject.SetActive(false);
-            if(Vector3.Distance(cam.transform.position, new Vector3(0, 30, 0)) < 2)
+            if(Vector3.Distance(cam.transform.position, new Vector3(0, 30, 0)) < 3)
             {
                 minEnters = 1;
                 maxEnters = 3;
@@ -89,19 +90,24 @@ public class GameLoop : MonoBehaviour
             if(!setupNewLevel)
             {
             cam.zOffset += 45;
-            if(newDoorTime > 1.5f)
+            if(newDoorTime > 2)
             {
                 newDoorTime -= 0.3f;
             }
             timer.maxTime += 3.5f;
                 timer.ResetTimer();
-            minEnters++;
+            currentEnters = 0;
+            i++;
+            if(i % 2 == 0)
+            {
+                minEnters++;
+            }
             maxEnters++;
             requiredEnters = Random.Range(minEnters, maxEnters);
             StartCoroutine(TextRoutine());
             currentLevel++;
                 Spawn();
-                currentEnters = 0;
+
                 timerObj.SetActive(true);
                 setupNewLevel = true;
                 canLose = true;
@@ -169,7 +175,15 @@ public class GameLoop : MonoBehaviour
     IEnumerator TextRoutine()
     {
         text.gameObject.SetActive(true);
-        text.text = "Enter " + requiredEnters + " Doors";
+        if(requiredEnters == 1)
+        {
+            text.text = "Enter " + requiredEnters + " Door";
+        }
+        else
+        {
+            text.text = "Enter " + requiredEnters + " Doors";
+        }
+
         yield return new WaitForSeconds(3);
         text.gameObject.SetActive(false);
     }
