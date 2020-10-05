@@ -95,7 +95,7 @@ public class GameLoop : MonoBehaviour
             cam.zOffset += 45;
             if(newDoorTime > 2)
             {
-                newDoorTime -= 0.3f;
+                newDoorTime -= 0.35f;
             }
             timer.maxTime += 3.5f;
                 timer.ResetTimer();
